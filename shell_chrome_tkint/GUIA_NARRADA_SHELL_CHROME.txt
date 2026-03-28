@@ -1,0 +1,147 @@
+GUÍA NARRADA EN PRIMERA PERSONA
+Proyecto: Shell gráfico en Python con Tkinter para abrir Google Chrome
+
+En este ejercicio, lo que hice fue crear y dejar listo un archivo en Python usando Tkinter, con una interfaz gráfica amigable y un icono, para abrir Google Chrome. La idea fue dejar este proyecto por fuera del taller, directamente en el Escritorio, para luego poder compartirlo y mostrar su funcionamiento.
+
+1. Qué necesitaba tener
+- El archivo principal: shell_chrome_tkinter.py
+- La imagen del icono: icono_chrome_shell.png
+- El archivo comprimido: shell_chrome_tkint.zip
+
+2. Qué hice primero
+Primero confirmé que no debía dejar el archivo dentro de la carpeta del taller, sino por fuera, en el Escritorio. Como estaba trabajando con VS Code y WSL, tuve que identificar la ruta correcta del Escritorio en Windows.
+
+Al comienzo intenté entrar con rutas como estas:
+- /mnt/c/Users/dchanchi/Desktop
+- /mnt/c/Users/dchanchi/OneDrive/Desktop
+- /mnt/c/Users/dchanchi/OneDrive/Escritorio
+
+Esas rutas no funcionaron. Después verifiqué el contenido de mi usuario y encontré que realmente mi Escritorio estaba dentro de una carpeta de OneDrive institucional.
+
+3. Cómo identifiqué la ruta correcta
+Usé este comando para revisar las carpetas disponibles:
+
+ls "/mnt/c/Users/dchanchi/OneDrive - berchmans.edu.co"
+
+Con eso confirmé que la carpeta correcta sí existía y que dentro estaba "Escritorio".
+
+La ruta correcta quedó así:
+
+/mnt/c/Users/dchanchi/OneDrive - berchmans.edu.co/Escritorio
+
+4. Cómo entré al Escritorio correctamente
+Como la ruta tenía espacios, tuve que usar comillas dobles. Entré así:
+
+cd "/mnt/c/Users/dchanchi/OneDrive - berchmans.edu.co/Escritorio"
+
+Después revisé el contenido con:
+
+ls
+
+5. Qué encontré en el Escritorio
+En el Escritorio encontré el archivo comprimido del proyecto:
+
+shell_chrome_tkint.zip
+
+Eso me permitió entender que todavía no existía la carpeta extraída, por eso cuando intentaba entrar directamente a shell_chrome_tkint me salía error de "No such file or directory".
+
+6. Cómo descomprimí el proyecto
+Desde el Escritorio descomprimí el archivo ZIP con este comando:
+
+unzip shell_chrome_tkint.zip -d shell_chrome_tkint
+
+Si el sistema no reconoce unzip, la forma de instalarlo es esta:
+
+sudo apt update
+sudo apt install unzip -y
+
+Después de descomprimir, ya pude entrar a la carpeta creada:
+
+cd shell_chrome_tkint
+
+Y confirmé los archivos con:
+
+ls
+
+Ahí me aparecieron:
+- icono_chrome_shell.png
+- shell_chrome_tkinter.py
+
+7. Cómo abrí la carpeta en VS Code
+Ya estando dentro de la carpeta correcta, abrí el proyecto con:
+
+code .
+
+Eso abrió el proyecto completo en VS Code, mostrando el archivo Python y la imagen del icono en el explorador.
+
+8. Qué pasó al ejecutar el archivo
+Intenté ejecutar el programa así:
+
+python3 shell_chrome_tkinter.py
+
+En ese momento apareció este error:
+
+ModuleNotFoundError: No module named 'tkinter'
+
+Ese error no era de rutas, ni del archivo, ni del código. El problema era que estaba usando Python de Ubuntu/WSL y a ese entorno le faltaba la librería Tkinter.
+
+9. Cómo se soluciona el error de Tkinter en WSL
+La solución es instalar Tkinter en Ubuntu con estos comandos:
+
+sudo apt update
+sudo apt install python3-tk -y
+
+Luego puedo verificar que sí quedó instalado con:
+
+python3 -c "import tkinter; print('Tkinter OK')"
+
+Si aparece el mensaje "Tkinter OK", entonces ya puedo volver a ejecutar:
+
+python3 shell_chrome_tkinter.py
+
+10. Otra forma de ejecutarlo
+Como el proyecto está pensado para abrir Google Chrome de Windows, también puedo ejecutarlo con Python de Windows, y en muchos casos esa opción resulta más práctica.
+
+Para hacerlo desde Windows, abro PowerShell o CMD y ejecuto:
+
+cd "C:\Users\dchanchi\OneDrive - berchmans.edu.co\Escritorio\shell_chrome_tkint"
+py shell_chrome_tkinter.py
+
+11. Qué logré al final
+Al final dejé listo el proyecto fuera del taller, en el Escritorio, con su archivo Python y su icono en la misma carpeta. También confirmé que:
+
+- la ruta correcta del Escritorio sí era la de OneDrive institucional,
+- el archivo ZIP sí se descomprimió correctamente,
+- la carpeta del proyecto sí abrió en VS Code,
+- el programa sí estaba bien estructurado,
+- y el único ajuste técnico pendiente en WSL era instalar Tkinter.
+
+12. Cómo explicaría el proceso de forma breve
+Yo primero identifiqué la ruta correcta del Escritorio en mi equipo. Después entré a esa ruta desde WSL usando comillas, porque tenía espacios. Luego verifiqué que el proyecto estaba en un archivo ZIP, lo descomprimí, entré a la carpeta resultante, confirmé que estaban el archivo Python y el icono, y abrí esa carpeta en VS Code. Finalmente, al ejecutar el archivo detecté que el error restante era la falta de Tkinter en WSL, por lo que la solución era instalar python3-tk o ejecutar el proyecto con Python de Windows.
+
+13. Comandos finales resumidos
+Ruta del Escritorio:
+cd "/mnt/c/Users/dchanchi/OneDrive - berchmans.edu.co/Escritorio"
+
+Descomprimir el proyecto:
+unzip shell_chrome_tkint.zip -d shell_chrome_tkint
+
+Entrar a la carpeta:
+cd shell_chrome_tkint
+
+Abrir en VS Code:
+code .
+
+Ejecutar en WSL:
+python3 shell_chrome_tkinter.py
+
+Instalar Tkinter si hace falta:
+sudo apt update
+sudo apt install python3-tk -y
+
+Ejecutar con Python de Windows:
+cd "C:\Users\dchanchi\OneDrive - berchmans.edu.co\Escritorio\shell_chrome_tkint"
+py shell_chrome_tkinter.py
+
+14. Cierre
+Con este proceso puedo explicar claramente cómo ubiqué el proyecto, cómo lo organicé fuera del taller, cómo lo abrí en VS Code y cómo resolví el error final para que el shell gráfico con Tkinter quede listo para usarse y presentarse.
