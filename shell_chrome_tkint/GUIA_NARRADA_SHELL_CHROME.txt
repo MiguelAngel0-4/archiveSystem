@@ -1,4 +1,4 @@
-GUÍA NARRADA EN PRIMERA PERSONA
+GUÍA 
 Proyecto: Shell gráfico en Python con Tkinter para abrir Google Chrome
 
 En este ejercicio, lo que hice fue crear y dejar listo un archivo en Python usando Tkinter, con una interfaz gráfica amigable y un icono, para abrir Google Chrome. La idea fue dejar este proyecto por fuera del taller, directamente en el Escritorio, para luego poder compartirlo y mostrar su funcionamiento.
